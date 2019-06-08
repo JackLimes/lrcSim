@@ -9,6 +9,10 @@ cd lrcSim
 ./sim.sh
 ```
 Black line points to who goes firstMarker.
+
 Red line points to who won the most.
+
 take turns going clockwise.
+
 Numbers are win percentage.
+
