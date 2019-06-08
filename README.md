@@ -8,7 +8,7 @@ cd lrcSim
 ./build.sh
 ./sim.sh
 ```
-Black line points to who goes firstMarker.
+Black line points to who goes first.
 
 Red line points to who won the most.
 
