@@ -6,13 +6,13 @@ using namespace std;
 
 void play_table(table* thisTable, int numGames)
 {
-	
+	int playerCount = thisTable->getPlayerCount();
 	for(int g = 0; g < numGames; g++)
 	{
 		//cout << "game " << g << endl;
 		while(!(thisTable->getGameOver()))
 		{
-			for(int p = 0; p < thisTable->getPlayerCount(); p++) // everyone takes a turn
+			for(int p = 0; p < playerCount; p++) // everyone takes a turn
 			{
 				thisTable->roll(p);
 			}
