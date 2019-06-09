@@ -17,7 +17,9 @@ void table::roll(int pIndex)
 
 	for(int i = 0; i < numRolls; i++)  //if no funds, turn is skipped.
 	{
-		dieVal roll = dieMap[rand() % 6];
+		int result;
+		random_r(&buf, &result);
+		dieVal roll = dieMap[result % 6];
 		switch(roll)
 		{
 			case d:

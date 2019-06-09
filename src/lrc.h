@@ -2,6 +2,7 @@
 #define LRC_H
 
 #include <vector>
+#include <stdlib.h>
 
 struct player
 {
@@ -19,15 +20,16 @@ class table // as in game table
 		bool gameOver = false;
 		std::vector<player> players;
 		dieVal dieMap[6] = {d, d, d, l, r, c};
+		char statebuf[64];
+		random_data buf;
 
 	public:
-		table() {}
-		table(int pCount): playerCount(pCount), playersLeft(pCount)
+		table()
 		{
-			for(int i = 0; i < pCount; i++)
-			{
-				players.push_back(player());
-			}
+			// rand() slows down multithreading
+			//random_r does not
+			buf.state = NULL;
+			initstate_r(rand(), statebuf, 64, &buf); // rand() is good for seeding. Doesn't slow down threads
 		}
 		void roll(int pIndex);
 		void giveLeft(int pIndex);
