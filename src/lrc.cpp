@@ -8,6 +8,7 @@ using namespace std;
 void table::roll(int pIndex)
 {
 	int numRolls = std::min(3, players[pIndex].funds);
+	int result;
 
 	if(numRolls == 0)
 	{
@@ -17,8 +18,11 @@ void table::roll(int pIndex)
 
 	for(int i = 0; i < numRolls; i++)  //if no funds, turn is skipped.
 	{
-		int result;
-		random_r(&buf, &result);
+		do //This should get rid of modulo bias
+		{
+			random_r(&buf, &result);
+		} while(result > RAND_MAX - 2); // 2 is precalculated from (RAND_MAX % 6) + 1
+
 		dieVal roll = dieMap[result % 6];
 		switch(roll)
 		{
