@@ -34,7 +34,7 @@ int winCount(table tables[], int playerID, int count)
 
 int main()
 {
-	const int NUM_THREADS = 4;
+	const int NUM_THREADS = std::thread::hardware_concurrency();
 
 	int numPlayers, numGames;
 	//cout << "Number of players: ";
