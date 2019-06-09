@@ -117,9 +117,6 @@ void table::setPlayers(int p)
 {
 	playerCount = p;
 	playersLeft = p;
-	players.clear();
-	for(int i = 0; i < p; i++)
-	{
-		players.push_back(player());
-	}
+	delete players;
+	players = new player[p];
 }
