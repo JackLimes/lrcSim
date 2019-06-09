@@ -38,16 +38,28 @@ int main()
 
 	int numPlayers, numGames;
 	//cout << "Number of players: ";
-	cin >> numPlayers;
+	std::cin >> numPlayers;
 	//cout << "Number of Games: ";
-	cin >> numGames;
+	std::cin >> numGames;
 
 	table tables[NUM_THREADS];
 	std::thread threads[NUM_THREADS];
+	int gameCount[NUM_THREADS];
+
+	for(int i = 0; i < NUM_THREADS; i++)
+	{
+		gameCount[i] = numGames / NUM_THREADS;
+	}
+	int remainder = numGames % NUM_THREADS;
+	for(int i = 0; i < remainder; i++)
+	{
+		gameCount[i]++;
+	}
+
 	for(int i = 0; i < NUM_THREADS; i++)
 	{
 		tables[i].setPlayers(numPlayers);
-		threads[i] = std::thread(play_table, &tables[i], numGames/NUM_THREADS);
+		threads[i] = std::thread(play_table, &tables[i], gameCount[i]);
 	}
 
 	for(int i = 0; i < NUM_THREADS; i++)
@@ -58,7 +70,7 @@ int main()
 	//once all threads have finished.
 	for(int i = 0; i < numPlayers; i++)
 	{
-		cout << winCount(tables, i, NUM_THREADS) << endl;
+		std::cout << winCount(tables, i, NUM_THREADS) << endl;
 	}
 
 	return 0;
