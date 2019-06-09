@@ -38,8 +38,12 @@ for i in range(numPlayers):
 	textList[i].draw(win)
 	if winList[i] == maxWins:
 		winMarker = Line(Point(res/2, res/2), circList[i].getCenter())
-		winMarker.setFill("red")
+		winMarker.setFill("green")
 		winMarker.draw(win)
+	if winList[i] == minWins:
+		loseMarker = Line(Point(res/2, res/2), circList[i].getCenter())
+		loseMarker.setFill("red")
+		loseMarker.draw(win)
 
 firstMarker = Line(Point(res/2, res/2), circList[0].getCenter())
 firstMarker.draw(win)

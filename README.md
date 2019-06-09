@@ -10,7 +10,9 @@ cd lrcSim
 ```
 Black line points to who goes first.
 
-Red line points to who won the most.
+Green line points to who won the most.
+
+Red line points to who lost the most.
 
 take turns going clockwise.
 
