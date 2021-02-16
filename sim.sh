@@ -1,5 +1,5 @@
 #!/bin/bash
-#duct tape and bailing wire this bitch!
+#duct tape and bailing wire!
 echo "Enter number of players"
 read players
 echo "Enter number of games"
